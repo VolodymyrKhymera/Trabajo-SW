@@ -1,0 +1,36 @@
+<!-- When logged -> show main menu -->
+<div ng-show='IsLogged'>
+  <p><label>Usuario:</label><span>{{ user.name }}</span></p>
+  
+  <h2>Menu principal</h2>
+  
+  <a href="#!todo">Tareas pendientes</a>
+  <a href="#!users">Gestion de usuarios</a>
+  <a href="#!tasks">Gestion de tareas</a>
+  <a href="#!procs">Gestion de procesos</a>
+  <a href="#!runs">Lanzar un proceso</a>
+  
+</div>
+
+<!-- When not logged -> show the login form -->  
+<div ng-show='!IsLogged'>
+  <h2>Login Page</h2>
+
+  <form ng-submit="formSubmit()">
+    <div>
+      <span>Usuario:</span>
+      <input type="text" ng-model="username" required=""/>
+    </div>
+
+    <div>
+      <span>Contraseña</span>
+      <input type="password" ng-model="password" required=""/>
+    </div>
+
+    <div>
+      <button type="submit">Login</button>
+      <span>{{ errormsg }}</span>
+    </div>
+
+  </form>
+</div>

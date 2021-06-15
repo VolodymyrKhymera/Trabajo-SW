@@ -1,0 +1,18 @@
+<div>
+  <h2>Tareas pendientes</h2>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Tarea</th>
+      <th>Datos</th>
+    </tr>
+    <tr ng-repeat="t in tasks">
+      <td>{{ t.id }}</td>
+      <td>{{ t.name }}</td>
+      <td>{{ t.data }}</td>
+    </tr>
+  </table>
+
+  <a href='#/!'>Volver a la pantalla principal</a>
+</div>
