@@ -42,14 +42,14 @@ var login = require('./login');
 //var users = require('./users');
 //var tasks = require('./tasks');
 //var workflows = require('./workflows');
-//var runs = require('./runs');
+var runs = require('./runs');
 var todo = require('./todo');
 
 login.init(router, db);
 //users.init(router, db);
 //tasks.init(router, db);
 //workflows.init(router, db);
-//runs.init(router, db);
+runs.init(router, db);
 todo.init(router, db);
 
 const port = 8888;

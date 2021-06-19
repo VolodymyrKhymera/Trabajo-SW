@@ -7,6 +7,10 @@ angular.module('wfp', ['ngRoute'])
                 controller: 'main',
                 templateUrl: 'main.html'
             })
+            .when('/runs', {
+                controller: 'runsController',
+                templateUrl: 'runs.html'
+            })
             .when('/todo', {
                 controller: 'todo',
                 templateUrl: 'todo.html'
