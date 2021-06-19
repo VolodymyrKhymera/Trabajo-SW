@@ -50,9 +50,27 @@ INSERT INTO "users" VALUES (1,'admin','Administrador','root@wf-processor.com','a
 INSERT INTO "users" VALUES (2,'juanito','Juan Sánchez','juan.sanchez@mycomp.com','12345');
 INSERT INTO "users" VALUES (3,'pepito','Pepe López','pepe.lopez@gmail.com','patata');
 INSERT INTO "workflows" VALUES (1,'Proceso 1');
+-----Añadimos varios procesos más
+INSERT INTO "workflows" VALUES (2,'Proceso 2');
+INSERT INTO "workflows" VALUES (3,'Proceso 3');
+INSERT INTO "workflows" VALUES (4,'Proceso 4');
+
+-----Las tareas del proceso 1
 INSERT INTO "wftasks" VALUES (1,1,10,1,'Al Scrum Master');
 INSERT INTO "wftasks" VALUES (2,1,20,4,'Reunión revisión del sprint');
 INSERT INTO "wftasks" VALUES (3,1,30,3,'Requisitos software para las tareas del sprint.');
+-----Las tareas del proceso 2
+INSERT INTO "wftasks" VALUES (4,1,10,2,'Presupuesto');
+INSERT INTO "wftasks" VALUES (5,1,20,1,'Enviar presupuesto');
+-----Las tareas del proceso 3
+INSERT INTO "wftasks" VALUES (7,1,10,6,'Diseñar sistema de tracking');
+INSERT INTO "wftasks" VALUES (8,1,20,7,'Implementar sistema de traking');
+INSERT INTO "wftasks" VALUES (9,1,30,9,'Realizar pruebas');
+-----Las tareas del proceso 4
+INSERT INTO "wftasks" VALUES (10,1,10,1,'Al Cliente');
+INSERT INTO "wftasks" VALUES (11,1,10,10,'Pedir componentes electronicos');
+INSERT INTO "wftasks" VALUES (12,1,20,3,'Al Scrum Master');
+
 INSERT INTO "tasks" VALUES (1,'Enviar e-mail',NULL);
 INSERT INTO "tasks" VALUES (2,'Redatar documento',NULL);
 INSERT INTO "tasks" VALUES (3,'Revisar documento',NULL);
@@ -64,7 +82,9 @@ INSERT INTO "tasks" VALUES (8,'Redactar requisitos de sistema',NULL);
 INSERT INTO "tasks" VALUES (9,'Diseñar pruebas de sistema',NULL);
 INSERT INTO "tasks" VALUES (10,'Realizar pedido',NULL);
 INSERT INTO "tasks" VALUES (11,'Enviar Factura',NULL);
+
 INSERT INTO "runs" VALUES (1,1,2,2,NULL);
+
 INSERT INTO "usertasks" VALUES (1,1,2,1,2,'');
 INSERT INTO "usertasks" VALUES (2,1,2,2,1,NULL);
 INSERT INTO "usertasks" VALUES (3,1,2,3,1,NULL);

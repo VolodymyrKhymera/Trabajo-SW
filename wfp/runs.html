@@ -1,0 +1,20 @@
+<!--Mostramos los procesos definidos por la empresa-->
+<p>Respuesta del servidor: {{message}}</p>
+<p></p>
+<table>
+<tr>
+    <th>name</th><th>workflow</th><th>orden</th><th>task</th><th>data</th>
+</tr>
+<tr ng-repeat='p in processes | orderBy:"name"'>
+    <th>{{p.name}}</th>
+    <th>{{p.workflow}}</th>
+    <th>{{p.orden}}</th>
+    <th>{{p.task}}</th>
+    <th>{{p.data}}</th>
+</tr>
+
+</table>
+<button >Comenzar Proceso 1</button>
+<button >Comenzar Proceso 2</button>
+<button >Comenzar Proceso 3</button>
+<a href='#/!'>Volver a la pantalla principal</a>
