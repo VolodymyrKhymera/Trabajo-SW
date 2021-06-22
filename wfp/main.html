@@ -1,15 +1,15 @@
 <!-- When logged -> show main menu -->
 <div ng-show='IsLogged'>
-  <p><label>Usuario:</label><span>{{ user.name }}</span></p>
-  
+  <p><label>Usuario:</label><span>{{ user.name }}</span></p>  
+
   <h2>Menu principal</h2>
   
   <a href="#!todo">Tareas pendientes</a>
   <a href="#!users">Gestion de usuarios</a>
   <a href="#!tasks">Gestion de tareas</a>
   <a href="#!procs">Gestion de procesos</a>
-  <a href="#!runs">Lanzar un proceso</a>
-  
+  <a href="#!runs" ng-init='usr=user.name'>Lanzar un proceso</a>
+  <p>Usuario: {{usr}}</p>
 </div>
 
 <!-- When not logged -> show the login form -->  

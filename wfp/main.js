@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('wfp')
-    .controller('main', function($scope, $http, UserData) {
+    .controller('main', function($scope, $http,$rootScope, UserData) {
 
         $scope.IsLogged = UserData.IsLogged();
 
@@ -18,7 +18,7 @@ angular.module('wfp')
             $scope.formSubmit = function() {
                 var data = { user: $scope.username, passwd: $scope.password };
 
-                $http.post("/login", data).then(function(response) {
+                $http.post("/post", data).then(function(response) {
                     if ('errormsg' in response.data) {
                         // Usuario rechazado
                         $scope.errormsg = "Usuario rechazado";
@@ -33,6 +33,7 @@ angular.module('wfp')
                         $scope.IsLogged = true;
                         $scope.user = response.data.user;
                         $scope.isAdmin = response.data.isAdmin;
+                        $rootScope.userr=response.data.user;
                     }
                 }, function(response) {
                     // Http Error
@@ -40,4 +41,7 @@ angular.module('wfp')
                 });
             };
         }
+
+        
+
     });
