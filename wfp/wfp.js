@@ -16,6 +16,11 @@ angular.module('wfp', ['ngRoute'])
                 templateUrl: 'todo.html'
             });
     })
+    
+    .run(function($rootScope) {
+        
+    })
+
     .factory('UserData', function() {
         var user = {};
         var isAdmin = false;

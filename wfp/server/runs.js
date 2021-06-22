@@ -1,5 +1,4 @@
 'use strict';
-
 exports.init = function(app, db) {
     // Obtener los procesos de la empresa
     app.get('/runs', function (req, res) {
