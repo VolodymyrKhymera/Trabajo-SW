@@ -12,7 +12,7 @@ angular.module('wfp')
         });
         
         $scope.finalizarProceso = function(task){
-            var data = {taskID: task.id };
+            var data = {taskID: task.id, wtid: task.wtid};
             console.log(data);
             $http.post("/todo",data).then(function(response){
                 $scope.message = response.data.message;
