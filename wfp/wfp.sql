@@ -60,16 +60,16 @@ INSERT INTO "wftasks" VALUES (1,1,10,1,'Al Scrum Master');
 INSERT INTO "wftasks" VALUES (2,1,20,4,'Reunión revisión del sprint');
 INSERT INTO "wftasks" VALUES (3,1,30,3,'Requisitos software para las tareas del sprint.');
 -----Las tareas del proceso 2
-INSERT INTO "wftasks" VALUES (4,1,10,2,'Presupuesto');
-INSERT INTO "wftasks" VALUES (5,1,20,1,'Enviar presupuesto');
+INSERT INTO "wftasks" VALUES (4,2,10,2,'Presupuesto');
+INSERT INTO "wftasks" VALUES (5,2,20,1,'Enviar presupuesto');
 -----Las tareas del proceso 3
-INSERT INTO "wftasks" VALUES (7,1,10,6,'Diseñar sistema de tracking');
-INSERT INTO "wftasks" VALUES (8,1,20,7,'Implementar sistema de traking');
-INSERT INTO "wftasks" VALUES (9,1,30,9,'Realizar pruebas');
+INSERT INTO "wftasks" VALUES (7,3,10,6,'Diseñar sistema de tracking');
+INSERT INTO "wftasks" VALUES (8,3,20,7,'Implementar sistema de traking');
+INSERT INTO "wftasks" VALUES (9,3,30,9,'Realizar pruebas');
 -----Las tareas del proceso 4
-INSERT INTO "wftasks" VALUES (10,1,10,1,'Al Cliente');
-INSERT INTO "wftasks" VALUES (11,1,10,10,'Pedir componentes electronicos');
-INSERT INTO "wftasks" VALUES (12,1,20,3,'Al Scrum Master');
+INSERT INTO "wftasks" VALUES (10,4,10,1,'Al Cliente');
+INSERT INTO "wftasks" VALUES (11,4,10,10,'Pedir componentes electronicos');
+INSERT INTO "wftasks" VALUES (12,4,20,3,'Al Scrum Master');
 
 INSERT INTO "tasks" VALUES (1,'Enviar e-mail',NULL);
 INSERT INTO "tasks" VALUES (2,'Redatar documento',NULL);
