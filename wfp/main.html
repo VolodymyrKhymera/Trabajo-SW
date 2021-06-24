@@ -4,12 +4,14 @@
 
   <h2>Menu principal</h2>
   
+  <a href="#!programmed">Tareas programdas</a>
   <a href="#!todo">Tareas pendientes</a>
+  <a href="#!finished">Tareas terminadas</a>
   <a href="#!users">Gestion de usuarios</a>
   <a href="#!tasks">Gestion de tareas</a>
   <a href="#!procs">Gestion de procesos</a>
   <a href="#!runs" ng-init='usr=user.name'>Lanzar un proceso</a>
-  <p>Usuario: {{usr}}</p>
+  <p>Usuario: {{user.name}}</p>
 </div>
 
 <!-- When not logged -> show the login form -->  

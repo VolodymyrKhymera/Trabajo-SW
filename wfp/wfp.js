@@ -14,6 +14,14 @@ angular.module('wfp', ['ngRoute'])
             .when('/todo', {
                 controller: 'todo',
                 templateUrl: 'todo.html'
+            })
+            .when('/finished', {
+                controller: 'finished',
+                templateUrl: 'finished.html'
+            })
+            .when('/programmed', {
+                controller: 'programmed',
+                templateUrl: 'programmed.html'
             });
     })
     
