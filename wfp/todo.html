@@ -6,13 +6,18 @@
       <th>ID</th>
       <th>Tarea</th>
       <th>Datos</th>
+      <th></th>
     </tr>
-    <tr ng-repeat="t in tasks">
+    <tr ng-repeat="t in tasks track by $index">
       <td>{{ t.id }}</td>
       <td>{{ t.name }}</td>
       <td>{{ t.data }}</td>
+      <td><button ng-click="finalizarProceso(t)">Terminar tarea {{ t.id }}</button></td>
     </tr>
   </table>
+  <br>
+  <p>{{message}}</p>
+  <br>
 
   <a href='#/!'>Volver a la pantalla principal</a>
 </div>
