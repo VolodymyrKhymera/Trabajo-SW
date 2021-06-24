@@ -7,12 +7,14 @@
       <th>Tarea</th>
       <th>Datos</th>
       <th></th>
+      <th></th>
     </tr>
     <tr ng-repeat="t in tasks track by $index">
       <td>{{ t.id }}</td>
       <td>{{ t.name }}</td>
       <td>{{ t.data }}</td>
       <td><button ng-click="finalizarProceso(t)">Terminar tarea {{ t.id }}</button></td>
+      <td><button ng-click="cancelarProceso(t)">Cancelar proceso de la tarea {{ t.id }}</button></td>
     </tr>
   </table>
   <br>
