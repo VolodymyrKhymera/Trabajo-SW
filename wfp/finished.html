@@ -1,0 +1,18 @@
+<div>
+    <h2>Tareas terminadas</h2>
+  
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Tarea</th>
+        <th>Datos</th>
+      </tr>
+      <tr ng-repeat="t in tasks track by $index">
+        <td>{{ t.id }}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.data }}</td>
+      </tr>
+    </table>
+  
+    <a href='#/!'>Volver a la pantalla principal</a>
+  </div>
