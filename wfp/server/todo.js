@@ -11,7 +11,7 @@ exports.init = function(app, db) {
     });
 
     app.post('/todo', function(req, res) {
-        console.log(req.body);
+        //console.log(req.body);
         var id=req.body.taskID;
         var wtid=req.body.wtid;
         var sql1= 'UPDATE usertasks SET state = 3 WHERE id='+id+';';
@@ -21,7 +21,7 @@ exports.init = function(app, db) {
             }
             else {
                 console.log("Actualización correcta usertasks");}
-            var sql2= 'UPDATE runs SET state = 1 WHERE usertask='+id+';';
+            var sql2= 'UPDATE runs SET state = 1 WHERE usertask='+id+' AND user='+req.session.userID+';';
             db.run(sql2, function(err){
                 if (err) {
                     return console.log(err.message);
@@ -36,42 +36,57 @@ exports.init = function(app, db) {
                     if (err) {
                         return console.error(err.message);
                         }
-                    console.log(wf[0]);
                     wfid=wf[0].workflow;
                     order=wf[0].orden;
                     //wf.forEach((row) => {
                         //console.log(row.name);
                     //});
-                    console.log(wfid+" "+order);
+                    //console.log(wfid+" "+order);
+
+                    var ids= [];
+                    var sql4= 'SELECT id, orden from wftasks where orden>'+order+' AND workflow =? ORDER BY orden;';
+                    db.all(sql4, wfid, function(err, rows) {
+                        var maxOrder= Number.MAX_VALUE;
+                        //console.log(rows);
+                        var i=0;
+                        rows.forEach((element) => {
+                            if(element.orden>order && element.orden<=maxOrder){
+                                maxOrder=element.orden;
+                                ids[i]=element.id;
+                                //console.log(ids);
+                                i++;
+                            }
+                        });
+
+                        ids.forEach(wtid =>{
+                            //console.log(wtid);
+                            var sql5= 'UPDATE usertasks SET state = 2 WHERE wftask='+wtid+';';
+                            db.run(sql5, function(err){
+                                if (err) {
+                                    return console.log(err.message);
+                                }
+                                else {
+                                    console.log("Nuevas tareas pendientes incluidas");}
+                            });
+                            
+                            var sql6 = 'SELECT id from usertasks where wftask='+wtid+';';
+                            db.all(sql6, function(err,row){
+                                var usertaskID=row[0].id;
+                                var sql7 = 'INSERT INTO runs(workflow,user,state,usertask) VALUES('+wfid+','+req.session.userID+',2,'+usertaskID+');';
+                                db.run(sql7, function(err){
+                                    if (err) {
+                                        return console.log(err.message);
+                                    }
+                                    else {
+                                        console.log("Nuevas tareas en runs");}
+                                });
+                            });
+                        });
+                    });
                 });
             });
         });
-
-        /*var ids= [];
-        var sql4= 'SELECT id, orden form wftasks where order>'+order+' AND workflow =? ORDER BY order;';
-        db.all(sql4, wfid, function(err, rows) {
-            var maxOrder= Number.MAX_VALUE;
-            console.log(rows);
-            rows.forEach((element) => {
-                if(element.order>order && element.order<=maxOrder){
-                    maxOrder=element.order;
-                    ids=[ids, element.id];
-                    console.log(ids);
-                }
-            });
-            res.json(rows);
-        });
-        ids.forEach(wfid =>{
-            var sql5= 'UPDATE usertasks SET state = 2 WHERE wftasks='+wfid+';';
-            db.run(sql5, function(err){
-                if (err) {
-                    return console.log(err.message);
-                }
-                else {
-                    console.log("Nuevas tareas pendientes incluidas");}
-            });
-        });*/
         
-        res.json({message:'Se ha finalizado el proceso '+id});
+        res.json({message:'Se ha finalizado el proceso '+id+' refresque la página para ver sus nuevas tareas pendientes'});
     });
 };
