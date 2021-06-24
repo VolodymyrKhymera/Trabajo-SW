@@ -12,7 +12,15 @@ angular.module('wfp')
         });
         
         $scope.finalizarProceso = function(task){
-            var data = {taskID: task.id, wtid: task.wtid};
+            var data = {taskID: task.id, wtid: task.wtid, finalizar: true};
+            console.log(data);
+            $http.post("/todo",data).then(function(response){
+                $scope.message = response.data.message;
+            });
+        }
+
+        $scope.cancelarProceso = function(task){
+            var data = {taskID: task.id, wtid: task.wtid, finalizar: false};
             console.log(data);
             $http.post("/todo",data).then(function(response){
                 $scope.message = response.data.message;
