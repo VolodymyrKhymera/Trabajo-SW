@@ -47,6 +47,7 @@ var runs = require('./runs');
 var todo = require('./todo');
 var finished = require('./finished');
 var programmed = require('./programmed');
+var procs = require('./procs');
 
 post.init(router, db);
 //users.init(router, db);
@@ -57,6 +58,7 @@ runs.init(router, db);
 todo.init(router, db);
 finished.init(router, db);
 programmed.init(router, db);
+procs.init(router, db);
 
 const port = 8888;
 

@@ -22,6 +22,10 @@ angular.module('wfp', ['ngRoute'])
             .when('/programmed', {
                 controller: 'programmed',
                 templateUrl: 'programmed.html'
+            })
+            .when('/procs', {
+                controller: 'procs',
+                templateUrl: 'procs.html'
             });
     })
     

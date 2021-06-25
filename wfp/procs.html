@@ -1,0 +1,45 @@
+<div ng-show="isAdmin">
+    <h2>Procesos Activos</h2>
+  
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Proceso</th>
+        <th>Usuario</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="t in tasks track by $index">
+        <td>{{ t.id }}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.user }}</td>
+        <td><button ng-click="finalizarProceso(t)">Terminar proceso usuario {{ t.user }}</button></td>
+      </tr>
+    </table>
+    <br>
+    <p>{{message}}</p>
+    <br>
+  
+    <a href='#/!'>Volver a la pantalla principal</a>
+</div>
+
+<div ng-show="!isAdmin">
+    <h2>Procesos Activos</h2>
+  
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Proceso</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="t in tasks track by $index">
+        <td>{{ t.id }}</td>
+        <td>{{ t.name }}</td>
+        <td><button ng-click="finalizarProceso(t)">Terminar proceso usuario {{ t.user }}</button></td>
+      </tr>
+    </table>
+    <br>
+    <p>{{message}}</p>
+    <br>
+  
+    <a href='#/!'>Volver a la pantalla principal</a>
+</div>
