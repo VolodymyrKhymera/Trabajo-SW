@@ -1,38 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
 <!-- When logged -> show main menu -->
 <div ng-show='IsLogged'>
-  <p><label>Usuario:</label><span>{{ user.name }}</span></p>  
 
-  <h2>Menu principal</h2>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><b>Work Flow</b></a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#!programmed">Tareas programdas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#!todo">Tareas pendientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#!finished">Tareas terminadas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#!procs">Gestion de procesos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#!runs" ng-init='usr=user.name'>Lanzar un proceso</a>
+          </li>
+        </ul>
+        <div class="form-text navbar-brand">
+          <p class="fs-5">Usuario: {{user.name}}</p>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <img src="workflow.png" alt="imagen de work flow" style="height: 100%; background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;">
+</div>
+
+<body>
+  <!-- When not logged -> show the login form -->
+  <div ng-show='!IsLogged'>
+
+    <div style="border-style: solid none solid none; margin-top: 10%; background-color: #8c8c8c;">
+
+      <div class="mx-auto" style="width: 350px; margin: 5%;">
+        <form ng-submit="formSubmit()">
+          <div>
+            <label for="text" class="form-label" class="font-weight-bold" class="text-lowercase">Usuario</label>
+            <input type="text" class="form-control" ng-model="username" required="" />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" ng-model="password" required="" />
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <span>{{ errormsg }}</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   
-  <a href="#!programmed">Tareas programdas</a>
-  <a href="#!todo">Tareas pendientes</a>
-  <a href="#!finished">Tareas terminadas</a>
-  <a href="#!users">Gestion de usuarios</a>
-  <a href="#!tasks">Gestion de tareas</a>
-  <a href="#!procs">Gestion de procesos</a>
-  <a href="#!runs" ng-init='usr=user.name'>Lanzar un proceso</a>
-  <p>Usuario: {{user.name}}</p>
-</div>
+</body>
 
-<!-- When not logged -> show the login form -->  
-<div ng-show='!IsLogged'>
-  <h2>Login Page</h2>
-
-  <form ng-submit="formSubmit()">
-    <div>
-      <span>Usuario:</span>
-      <input type="text" ng-model="username" required=""/>
-    </div>
-
-    <div>
-      <span>Contraseña</span>
-      <input type="password" ng-model="password" required=""/>
-    </div>
-
-    <div>
-      <button type="submit">Login</button>
-      <span>{{ errormsg }}</span>
-    </div>
-
-  </form>
-</div>
+</html>
