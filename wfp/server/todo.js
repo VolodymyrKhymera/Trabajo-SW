@@ -64,7 +64,7 @@ exports.init = function (app, db) {
                             });
 
                             ids.forEach(wtid => {
-                                var sql10 = 'SELECT COUNT(*) AS cuenta FROM wftasks AS ut WHERE orden=' + order + ' AND workflow =' + wfid + ' AND id=? AND id<>' + req.body.wtid + ' ORDER BY orden;';
+                                var sql10 = 'SELECT COUNT(*) AS cuenta FROM wftasks AS ut WHERE orden=' + order + ' AND workflow =' + wfid + ' AND id<>' + req.body.wtid + ' ORDER BY orden;';
                                 db.all(sql10, wtid, function (err, rows) {
                                     console.log(rows[0].cuenta);
                                     var vacio = rows[0].cuenta < 1;
