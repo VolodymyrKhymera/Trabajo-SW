@@ -103,8 +103,8 @@ exports.init = function (app, db) {
                                                             });
                                                         }
                                                     });
-                                                }
-                                            });
+                                                });
+                                            }
                                         });
                                     }
                                 });
