@@ -47,7 +47,6 @@ exports.init = function (app, db) {
                         //});
                         //console.log(wfid+" "+order);
 
-
                         var ids = [];
                         var sql4 = 'SELECT id, orden from wftasks where orden>' + order + ' AND workflow =? ORDER BY orden;';
                         db.all(sql4, wfid, function (err, rows) {
@@ -64,6 +63,7 @@ exports.init = function (app, db) {
                             });
 
                             ids.forEach(wtid => {
+<<<<<<< HEAD
                                 var sql10 = 'SELECT COUNT(*) AS cuenta FROM wftasks AS ut WHERE orden=' + order + ' AND workflow =' + wfid + ' AND id<>' + req.body.wtid + ' ORDER BY orden;';
                                 db.all(sql10, wtid, function (err, rows) {
                                     console.log(rows[0].cuenta);
@@ -103,22 +103,53 @@ exports.init = function (app, db) {
                                                                 });
                                                             });
                                                         }
-                                                    });
-                                                });
-                                            }
-                                        });
-
+=======
+                                console.log(wtid+' '+req.session.userID);
+                                var sql5 = 'UPDATE usertasks SET state = 2 WHERE wftask=' + wtid + ' AND user=? ;';
+                                db.run(sql5, req.session.userID, function (err) {
+                                    if (err) {
+                                        return console.log(err.message);
                                     }
-
+                                    else {
+                                        console.log("Nuevas tareas pendientes incluidas");
+                                        var sql6 = 'SELECT id FROM usertasks WHERE wftask=' + wtid + ' AND user=? AND state=2 ;';
+                                        db.all(sql6, req.session.userID, function (err, row) {
+                                            console.log(row);
+                                            var usertaskID = row[0].id;
+                                            var sql7 = 'INSERT INTO runs(workflow,user,state,usertask) VALUES(' + wfid + ',' + req.session.userID + ',2,' + usertaskID + ');';
+                                            db.run(sql7, function (err) {
+                                                if (err) {
+                                                    return console.log(err.message);
+                                                }
+                                                else {
+                                                    console.log("Nuevas tareas en runs");
+                                                    var sql8 = 'SELECT id FROM runs WHERE user=? ORDER BY id DESC LIMIT 1;';
+                                                    db.all(sql8, req.session.userID, function (err, rows) {
+                                                        console.log(rows);
+                                                        var runid = rows[0].id;
+                                                        var sql9 = 'UPDATE usertasks SET run = ' + runid + ' WHERE id=?;';
+                                                        db.run(sql9, usertaskID, function (err) {
+                                                            if (err) {
+                                                                return console.log(err.message);
+                                                            }
+                                                            else {
+                                                                console.log("Actualizacion run en usertaks");
+                                                            }
+                                                        });
+>>>>>>> 693410e68e5c714d45ec39814ae75c89ecf76eb3
+                                                    });
+                                                }
+                                            });
+                                        });
+                                    }
                                 });
                             });
-
-
                         });
                     });
                 });
-                res.json({ message: 'Se ha finalizado el proceso ' + id + ' refresque la página para ver sus nuevas tareas pendientes' });
             });
+
+            res.json({ message: 'Se ha finalizado el proceso ' + id + ' refresque la página para ver sus nuevas tareas pendientes' });
         }
         else {
             var sql1 = 'UPDATE usertasks SET state = 4 WHERE id=' + id + ';';
